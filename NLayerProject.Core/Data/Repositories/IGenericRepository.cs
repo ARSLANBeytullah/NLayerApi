@@ -11,7 +11,7 @@ namespace NLayerProject.Core.Data.Repositories
     {
         Task<T> GetByIdAsync(int id);
 
-        IQueryable<T> GetAll(Expression<Func<T,bool>> expressin);
+        IQueryable<T> GetAll();
         IQueryable<T> Where(Expression<Func<T,bool>> expression); //example call:ProductRepository.Where(x=>x.id>5).OrderBy.ToListAsync();
         Task<bool> AnyAsync(Expression<Func<T, bool>> expression);
         Task AddAsync(T entity);

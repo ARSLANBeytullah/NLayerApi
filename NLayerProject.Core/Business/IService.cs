@@ -14,9 +14,9 @@ namespace NLayerProject.Core.Business
         Task<IEnumerable<T>> GetAllAsync();
         IQueryable<T> Where(Expression<Func<T, bool>> expression); //example call:ProductRepository.Where(x=>x.id>5).OrderBy.ToListAsync();
         Task<bool> AnyAsync(Expression<Func<T, bool>> expression);
-        Task AddAsync(T entity);
+        Task<T> AddAsync(T entity);
 
-        Task AddRangeAsync(IEnumerable<T> entities);
+        Task<IEnumerable<T>> AddRangeAsync(IEnumerable<T> entities);
 
         Task UpdateAsync(T entity); //Data access katmanın da Update ve remove methodlarının asenkron methodları yok ama servis katmanında asenkronları vardır.
         Task RemoveAsync(T entity);

@@ -36,7 +36,7 @@ namespace NLayerProject.Data.Repositories
             return await _dbSet.AnyAsync(expression);
         }
 
-        public IQueryable<T> GetAll(Expression<Func<T, bool>> expressin)
+        public IQueryable<T> GetAll()
         {
             return _dbSet.AsNoTracking().AsQueryable(); //AsNoTracking uygulamanın performansını artırır.
         }

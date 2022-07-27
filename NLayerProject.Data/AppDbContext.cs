@@ -12,6 +12,13 @@ namespace NLayerProject.Data
     public class AppDbContext : DbContext
     {
          
+
+        protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)
+        {
+            optionsBuilder.UseSqlServer("server = DESKTOP - KBVDE09\\SQLEXPRESS; database = NLayerProject; " +
+                "integrated-security = true;");
+        }
+
         public AppDbContext(DbContextOptions<AppDbContext> options) : base(options)
         {
             
