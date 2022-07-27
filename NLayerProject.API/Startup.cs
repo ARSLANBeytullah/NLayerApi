@@ -8,7 +8,14 @@ using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Hosting;
 using Microsoft.Extensions.Logging;
 using Microsoft.OpenApi.Models;
+using NLayerProject.Business.Mapping;
+using NLayerProject.Business.Services;
+using NLayerProject.Core.Business;
+using NLayerProject.Core.Data.Repositories;
+using NLayerProject.Core.UnitOfWorks;
 using NLayerProject.Data;
+using NLayerProject.Data.Repositories;
+using NLayerProject.Data.UnitOfWorks;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -39,6 +46,12 @@ namespace NLayerProject.API
             {
                 c.SwaggerDoc("v1", new OpenApiInfo { Title = "NLayerProject.API", Version = "v1" });
             });
+            services.AddScoped(typeof(IGenericRepository<>), typeof(GenericRepository<>));
+            services.AddScoped<IUnitOfWork, UnitOfWork>();
+            //services.AddScoped(typeof(IRepository<>), typeof(Repository<>));
+            services.AddScoped(typeof(IService<>), typeof(Service<>));
+            
+            services.AddAutoMapper(typeof(MapProfile));
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
